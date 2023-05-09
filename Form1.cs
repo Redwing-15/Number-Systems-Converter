@@ -16,5 +16,10 @@ namespace Number_Systems_Converter
         {
             InitializeComponent();
         }
+
+        private void calculateBTN_Click(object sender, EventArgs e)
+        {
+            outputEntry.Text = inputEntry.Text;
+        }
     }
 }
