@@ -1,0 +1,9 @@
+E:\Desktop\Code Projects\C#\Number Systems Converter\bin\Debug\Number Systems Converter.exe.config
+E:\Desktop\Code Projects\C#\Number Systems Converter\bin\Debug\Number Systems Converter.exe
+E:\Desktop\Code Projects\C#\Number Systems Converter\bin\Debug\Number Systems Converter.pdb
+E:\Desktop\Code Projects\C#\Number Systems Converter\obj\Debug\Number Systems Converter.csproj.AssemblyReference.cache
+E:\Desktop\Code Projects\C#\Number Systems Converter\obj\Debug\Number_Systems_Converter.Properties.Resources.resources
+E:\Desktop\Code Projects\C#\Number Systems Converter\obj\Debug\Number Systems Converter.csproj.GenerateResource.cache
+E:\Desktop\Code Projects\C#\Number Systems Converter\obj\Debug\Number Systems Converter.csproj.CoreCompileInputs.cache
+E:\Desktop\Code Projects\C#\Number Systems Converter\obj\Debug\Number Systems Converter.exe
+E:\Desktop\Code Projects\C#\Number Systems Converter\obj\Debug\Number Systems Converter.pdb
