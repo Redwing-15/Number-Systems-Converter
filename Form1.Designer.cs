@@ -33,20 +33,22 @@ namespace Number_Systems_Converter
             this.outputEntry = new System.Windows.Forms.TextBox();
             this.inputSelect = new System.Windows.Forms.ComboBox();
             this.outputSelect = new System.Windows.Forms.ComboBox();
-            this.calculateBTN = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // inputEntry
             // 
-            this.inputEntry.Location = new System.Drawing.Point(49, 95);
+            this.inputEntry.Location = new System.Drawing.Point(48, 129);
             this.inputEntry.Multiline = true;
             this.inputEntry.Name = "inputEntry";
             this.inputEntry.Size = new System.Drawing.Size(459, 259);
             this.inputEntry.TabIndex = 0;
+            this.inputEntry.TextChanged += new System.EventHandler(this.inputEntry_TextChanged);
             // 
             // outputEntry
             // 
-            this.outputEntry.Location = new System.Drawing.Point(780, 95);
+            this.outputEntry.BackColor = System.Drawing.SystemColors.Window;
+            this.outputEntry.ForeColor = System.Drawing.Color.Black;
+            this.outputEntry.Location = new System.Drawing.Point(779, 129);
             this.outputEntry.Multiline = true;
             this.outputEntry.Name = "outputEntry";
             this.outputEntry.ReadOnly = true;
@@ -56,35 +58,38 @@ namespace Number_Systems_Converter
             // inputSelect
             // 
             this.inputSelect.FormattingEnabled = true;
-            this.inputSelect.Location = new System.Drawing.Point(85, 47);
+            this.inputSelect.Items.AddRange(new object[] {
+            "Binary",
+            "Decimal",
+            "Octal",
+            "Hexadecimal",
+            "ASCII"});
+            this.inputSelect.Location = new System.Drawing.Point(84, 81);
             this.inputSelect.Name = "inputSelect";
             this.inputSelect.Size = new System.Drawing.Size(367, 24);
             this.inputSelect.TabIndex = 2;
+            this.inputSelect.Text = "--Select--";
             // 
             // outputSelect
             // 
             this.outputSelect.FormattingEnabled = true;
-            this.outputSelect.Location = new System.Drawing.Point(826, 47);
+            this.outputSelect.Items.AddRange(new object[] {
+            "Binary",
+            "Decimal",
+            "Octal",
+            "Hexadecimal",
+            "ASCII"});
+            this.outputSelect.Location = new System.Drawing.Point(825, 81);
             this.outputSelect.Name = "outputSelect";
             this.outputSelect.Size = new System.Drawing.Size(367, 24);
             this.outputSelect.TabIndex = 3;
-            // 
-            // calculateBTN
-            // 
-            this.calculateBTN.Location = new System.Drawing.Point(570, 386);
-            this.calculateBTN.Name = "calculateBTN";
-            this.calculateBTN.Size = new System.Drawing.Size(153, 36);
-            this.calculateBTN.TabIndex = 5;
-            this.calculateBTN.Text = "Calculate";
-            this.calculateBTN.UseVisualStyleBackColor = true;
-            this.calculateBTN.Click += new System.EventHandler(this.calculateBTN_Click);
+            this.outputSelect.Text = "--Select--";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1334, 478);
-            this.Controls.Add(this.calculateBTN);
             this.Controls.Add(this.outputSelect);
             this.Controls.Add(this.inputSelect);
             this.Controls.Add(this.outputEntry);
@@ -102,7 +107,6 @@ namespace Number_Systems_Converter
         private System.Windows.Forms.TextBox outputEntry;
         private System.Windows.Forms.ComboBox inputSelect;
         private System.Windows.Forms.ComboBox outputSelect;
-        private System.Windows.Forms.Button calculateBTN;
     }
 }
 

@@ -15,9 +15,14 @@ namespace Number_Systems_Converter
         public Form1()
         {
             InitializeComponent();
+            inputSelect.DropDownStyle = ComboBoxStyle.DropDownList;
+            inputSelect.SelectedIndex = 0;
+
+            outputSelect.DropDownStyle = ComboBoxStyle.DropDownList;
+            outputSelect.SelectedIndex = 1;
         }
 
-        private void calculateBTN_Click(object sender, EventArgs e)
+        private void inputEntry_TextChanged(object sender, EventArgs e)
         {
             outputEntry.Text = inputEntry.Text;
         }
