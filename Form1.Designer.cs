@@ -57,21 +57,24 @@ namespace Number_Systems_Converter
             // 
             // inputSelect
             // 
+            this.inputSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.inputSelect.FormattingEnabled = true;
             this.inputSelect.Items.AddRange(new object[] {
             "Binary",
             "Decimal",
             "Octal",
             "Hexadecimal",
-            "ASCII"});
+            "ASCII",
+            "RGB"});
             this.inputSelect.Location = new System.Drawing.Point(84, 81);
             this.inputSelect.Name = "inputSelect";
             this.inputSelect.Size = new System.Drawing.Size(367, 24);
             this.inputSelect.TabIndex = 2;
-            this.inputSelect.Text = "--Select--";
+            this.inputSelect.SelectedIndexChanged += new System.EventHandler(this.inputSelect_SelectedIndexChanged);
             // 
             // outputSelect
             // 
+            this.outputSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.outputSelect.FormattingEnabled = true;
             this.outputSelect.Items.AddRange(new object[] {
             "Binary",
@@ -83,7 +86,7 @@ namespace Number_Systems_Converter
             this.outputSelect.Name = "outputSelect";
             this.outputSelect.Size = new System.Drawing.Size(367, 24);
             this.outputSelect.TabIndex = 3;
-            this.outputSelect.Text = "--Select--";
+            this.outputSelect.SelectedIndexChanged += new System.EventHandler(this.outputSelect_SelectedIndexChanged);
             // 
             // Form1
             // 
