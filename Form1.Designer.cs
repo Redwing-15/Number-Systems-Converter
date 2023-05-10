@@ -33,6 +33,7 @@ namespace Number_Systems_Converter
             this.outputEntry = new System.Windows.Forms.TextBox();
             this.inputSelect = new System.Windows.Forms.ComboBox();
             this.outputSelect = new System.Windows.Forms.ComboBox();
+            this.errorTextbox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // inputEntry
@@ -88,11 +89,24 @@ namespace Number_Systems_Converter
             this.outputSelect.TabIndex = 3;
             this.outputSelect.SelectedIndexChanged += new System.EventHandler(this.outputSelect_SelectedIndexChanged);
             // 
+            // errorTextbox
+            // 
+            this.errorTextbox.BackColor = System.Drawing.SystemColors.Menu;
+            this.errorTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.errorTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorTextbox.Location = new System.Drawing.Point(48, 414);
+            this.errorTextbox.Name = "errorTextbox";
+            this.errorTextbox.ReadOnly = true;
+            this.errorTextbox.Size = new System.Drawing.Size(1190, 38);
+            this.errorTextbox.TabIndex = 4;
+            this.errorTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1334, 478);
+            this.Controls.Add(this.errorTextbox);
             this.Controls.Add(this.outputSelect);
             this.Controls.Add(this.inputSelect);
             this.Controls.Add(this.outputEntry);
@@ -110,6 +124,7 @@ namespace Number_Systems_Converter
         private System.Windows.Forms.TextBox outputEntry;
         private System.Windows.Forms.ComboBox inputSelect;
         private System.Windows.Forms.ComboBox outputSelect;
+        private System.Windows.Forms.TextBox errorTextbox;
     }
 }
 

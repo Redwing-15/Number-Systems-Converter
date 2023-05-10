@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -132,6 +133,7 @@ namespace Number_Systems_Converter
             {
                 int number = Int32.Parse(num);
                 answer += decimalToHex(number); // Convers decimal number into hex and adds to the string
+                if (number == 0) { answer += "00"; }
             }
             answer = $"#{answer}";
             return answer;
@@ -288,7 +290,116 @@ namespace Number_Systems_Converter
             return answer;
         }
 
-        private void Switch()
+        private void handleErrors()
+        {
+            outputEntry.Text = "";
+            errorTextbox.Text = "";
+            if (inputSelect.SelectedIndex == -1) { return; }
+            if (outputSelect.SelectedIndex == -1) { return; }
+            if (inputEntry.Text.ToString() == "") { return; }
+
+            string input = inputEntry.Text.ToString();
+            string inputMode = inputSelect.SelectedItem.ToString();
+
+            switch (inputMode)
+            {
+                case "Binary":
+                    foreach (char character in input)
+                    {
+                        if (character == '1' | character == '0') { continue; }
+                        else if (character == ' ')
+                        {
+                            errorTextbox.Text = "Please do not separate binary numbers";
+                            return;
+                        }
+                        errorTextbox.Text = "Binary must consist of only 1s and 0s";
+                        return;
+                    }
+                    break;
+                case "Decimal":
+                    try
+                    {
+                        int Decimal = Convert.ToInt32(input);
+                        break;
+                    }
+                    catch (Exception)
+                    {
+                        errorTextbox.Text = "Decimals must only contain numbers and no spaces";
+                        return;
+                    }
+                case "Octal":
+                    try
+                    {
+                        int Decimal = Convert.ToInt32(input);
+                        break;
+                    }
+                    catch (Exception)
+                    {
+                        errorTextbox.Text = "Octal must only contain numbers and no spaces";
+                        return;
+                    }
+                case "Hexadecimal":
+                    char[] Characters = new char[15] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'F' };
+                    foreach (char character in input)
+                    {
+                        if (character == ' ')
+                        {
+                            errorTextbox.Text = "Please do not separate hexadecimal numbers";
+                            return;
+                        }
+                        else if (!Characters.Contains(character))
+                        {
+                            errorTextbox.Text = "Invalid hexadecimal character";
+                            return;
+                        }
+                    }
+                    break;
+                case "RGB":
+                    try
+                    {
+                        string[] nums = input.Split(' ');
+                        if (nums.Length > 3)
+                        {
+                            errorTextbox.Text = "RGB code must be in the format 255 255 255";
+                            return;
+                        }
+                        foreach (string item in nums)
+                        {
+                            try
+                            {
+                                int Number = Convert.ToInt32(item);
+                                if (Number > 255)
+                                {
+                                    errorTextbox.Text = "RGB value too large, must be between 0-255";
+                                    return;
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                errorTextbox.Text = "RGB code must be in the format 255 255 255";
+                                return;
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        errorTextbox.Text = "RGB code must be in the format 255 255 255";
+                        return;
+                    }
+                    break;
+            }
+            errorTextbox.Text = "";
+            try
+            {
+                convert();
+            }
+            catch (Exception error)
+            {
+                errorTextbox.Text = error.Message;
+                return;
+            }
+        }
+        private void convert()
         {
             string input = inputEntry.Text;
             string output = "";
@@ -322,8 +433,8 @@ namespace Number_Systems_Converter
                             }
                             else if (input.Length > 8)
                             {
-                                //Console.WriteLine("This method of input not supported. Please space the numbers");
-                                break;
+                                errorTextbox.Text = "This method of input not supported. Please space the numbers";
+                                return;
                             }
                             else
                             {
@@ -387,8 +498,8 @@ namespace Number_Systems_Converter
                             }
                             else if (input.Length > 8)
                             {
-                                //Console.WriteLine("This method of input not supported. Please space the numbers");
-                                break;
+                                errorTextbox.Text = "This method of input not supported. Please space the numbers";
+                                return;
                             }
                             else
                             {
@@ -425,8 +536,8 @@ namespace Number_Systems_Converter
                             }
                             else if (input.Length > 8)
                             {
-                                //Console.WriteLine("This method of input not supported. Please space the numbers");
-                                break;
+                                errorTextbox.Text = "This method of input not supported. Please space the numbers";
+                                return;
                             }
                             else
                             {
@@ -479,7 +590,7 @@ namespace Number_Systems_Converter
 
         private void inputEntry_TextChanged(object sender, EventArgs e)
         {
-            Switch();
+            handleErrors();
         }
 
         private void inputSelect_SelectedIndexChanged(object sender, EventArgs e)
@@ -515,8 +626,7 @@ namespace Number_Systems_Converter
 
         private void outputSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (inputEntry.Text.ToString() == "") { return; }
-            Switch();
+            handleErrors();
         }
     }
 }
