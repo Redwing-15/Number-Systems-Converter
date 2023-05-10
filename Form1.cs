@@ -298,7 +298,7 @@ namespace Number_Systems_Converter
             if (outputSelect.SelectedIndex == -1) { return; }
             if (inputEntry.Text.ToString() == "") { return; }
 
-            string input = inputEntry.Text.ToString();
+            string input = inputEntry.Text.ToString().ToUpper();
             string inputMode = inputSelect.SelectedItem.ToString();
 
             switch (inputMode)
@@ -353,6 +353,14 @@ namespace Number_Systems_Converter
                             return;
                         }
                     }
+                    if (outputSelect.SelectedItem.ToString() == "RGB")
+                    {
+                        if (input.Length != 6)
+                        {
+                            errorTextbox.Text = "Hexadecimal must be in format 00FF00";
+                            return;
+                        }
+                    }
                     break;
                 case "RGB":
                     try
@@ -401,7 +409,7 @@ namespace Number_Systems_Converter
         }
         private void convert()
         {
-            string input = inputEntry.Text;
+            string input = inputEntry.Text.ToUpper();
             string output = "";
 
             string inputMode = inputSelect.SelectedItem.ToString();
@@ -548,6 +556,7 @@ namespace Number_Systems_Converter
                     }
                     break;
                 case "ASCII":
+                    input = inputEntry.Text.ToString();
                     string outputString;
                     switch (outputMode)
                     {
@@ -622,6 +631,7 @@ namespace Number_Systems_Converter
             }
 
             outputSelect.Items.Remove(inputSelect.SelectedItem.ToString());
+            handleErrors();
         }
 
         private void outputSelect_SelectedIndexChanged(object sender, EventArgs e)
