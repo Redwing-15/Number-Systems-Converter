@@ -638,5 +638,10 @@ namespace Number_Systems_Converter
         {
             handleErrors();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
